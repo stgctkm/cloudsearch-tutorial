@@ -18,11 +18,11 @@ public class CloudSearchDocumentClient {
     private static final Logger logger = LoggerFactory.getLogger(CloudSearchDocumentClient.class);
 
 //    @Value("${cloud.search.access.key}")
-    String accessKey = "AKIAIZKZMZNZCOYOVONQ";
+    String accessKey = "xxxxxxxxxxxxxxxxxxx";
 //    @Value("${cloud.search.secret.key}")
-    String secretKey = "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";
+    String secretKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 //    @Value("${cloud.search.endpoint}")
-    String endpoint = "doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com";
+    String endpoint = "doc-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com";
 
     String searchEndPoint = "search-tutorial-movie-xxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com";
 
