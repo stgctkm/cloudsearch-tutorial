@@ -50,7 +50,7 @@ aws cloudsearch update-service-access-policies --domain-name tutorial-movie --ac
       "Condition": {
         "IpAddress": {
           "aws:SourceIp": [
-            "153.142.238.4/32"
+            "xx.xx.xx.xx/32"
           ]
         }
       }
@@ -104,7 +104,7 @@ aws cloudsearch describe-domains
     "DomainStatusList": [
         {
             "SearchInstanceType": "search.m1.small",
-            "DomainId": "198056666232/tutorial-movie",
+            "DomainId": "xxxxxxxxxx/tutorial-movie",
             "Limits": {
                 "MaximumReplicationCount": 5,
                 "MaximumPartitionCount": 10
@@ -114,14 +114,14 @@ aws cloudsearch describe-domains
             "SearchInstanceCount": 1,
             "DomainName": "tutorial-movie",
             "SearchService": {
-                "Endpoint": "search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com"
+                "Endpoint": "search-tutorial-movie-xxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com"
             },
             "RequiresIndexDocuments": false,
             "Processing": false,
             "DocService": {
-                "Endpoint": "doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com"
+                "Endpoint": "doc-tutorial-movie-xxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com"
             },
-            "ARN": "arn:aws:cloudsearch:ap-northeast-1:198056666232:domain/tutorial-movie",
+            "ARN": "arn:aws:cloudsearch:ap-northeast-1:xxxxxxxxxxxxxx:domain/tutorial-movie",
             "SearchPartitionCount": 1
         }
     ]
@@ -134,7 +134,7 @@ https://aws.amazon.com/developertools/9131774809784850
 ```
 ```
 
-aws cloudsearchdomain --endpoint-url http://doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com upload-documents --content-type application/json --documents ~/Downloads/movies-v2/moviedata2.json
+aws cloudsearchdomain --endpoint-url http://doc-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com upload-documents --content-type application/json --documents ~/Downloads/movies-v2/moviedata2.json
 {
     "status": "success",
     "adds": 5000,
@@ -153,30 +153,30 @@ https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-text.htm
 ```
 ### ブラウザで。
 ```
-https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=katniss&return=title
-https://doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=star wars&q.options={fields: ['title^5','plot']}
-https://doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=(and 'star' 'wars')
-https://doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=(and 'star wars' 'luke')
-https://doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q="with love"~3
+https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=katniss&return=title
+https://doc-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=star wars&q.options={fields: ['title^5','plot']}
+https://doc-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=(and 'star' 'wars')
+https://doc-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=(and 'star wars' 'luke')
+https://doc-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q="with love"~3
 ```
 
 ### facetの取得
 ```
-https://doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=star&return=title&facet.genres={}
+https://doc-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=star&return=title&facet.genres={}
 ```
 
 ### 検索
 ```
-aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'"
-aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "(and 'star' 'wars')"
-aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --facet {year:"{sort:'bucket', size:3}}"
-aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --facet '{year:{buckets:["[1970,1979]","[1980,1989]", "[1990,1999]","[2000,2009]", "[2010,}"]}}'
-#aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --facet '{size:{sort:["[1001,9999]","[0,1000]"]}}'
-aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --facet '{genres:{sort:"bucket", size:5}}'
+aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'"
+aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "(and 'star' 'wars')"
+aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --facet {year:"{sort:'bucket', size:3}}"
+aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --facet '{year:{buckets:["[1970,1979]","[1980,1989]", "[1990,1999]","[2000,2009]", "[2010,}"]}}'
+#aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --facet '{size:{sort:["[1001,9999]","[0,1000]"]}}'
+aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --facet '{genres:{sort:"bucket", size:5}}'
 
 
-aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --return title
-aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --return _no_fields
+aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --return title
+aws cloudsearchdomain search --endpoint-url https://search-tutorial-movie-xxxxxxxxxxxxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com --query-parser structured --search-query "title:'star'" --return _no_fields
 ```
 #### facet
 ```
