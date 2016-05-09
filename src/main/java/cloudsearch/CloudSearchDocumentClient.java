@@ -24,7 +24,7 @@ public class CloudSearchDocumentClient {
 //    @Value("${cloud.search.endpoint}")
     String endpoint = "doc-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com";
 
-    String searchEndPoint = "search-tutorial-movie-2pdrimt7emx32bf4e262fwwuh4.ap-northeast-1.cloudsearch.amazonaws.com";
+    String searchEndPoint = "search-tutorial-movie-xxxxxxxxxxxxxxxx.ap-northeast-1.cloudsearch.amazonaws.com";
 
     public void request(CloudSearchDocumentRequests requests) {
         AmazonCloudSearchDomainClient cloudSearch = createClient();
